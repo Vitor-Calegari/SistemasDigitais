@@ -1,0 +1,15 @@
+--------------- dados do aluno ---------------
+nome:
+matricula:
+--------------- dados do fpga ----------------
+familia: Cyclone III
+dispositivo: EP3C5E144C7
+-------- dados de utilizacao da placa --------
+total combinational functions:
+dedicates logic registers:
+total pins:
+-------------- dados de atraso ---------------
+input port:
+output port:
+atraso (ns):
+RR, RF, FR, FF:
