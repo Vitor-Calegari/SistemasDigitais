@@ -1,15 +1,15 @@
 --------------- dados do aluno ---------------
-nome:
-matricula:
+nome: Vitor Praxedes Calegari
+matricula: 22200379
 --------------- dados do fpga ----------------
 familia: Cyclone III
 dispositivo: EP3C5E144C7
 -------- dados de utilizacao da placa --------
-total combinational functions:
-dedicates logic registers:
-total pins:
+total combinational functions: 8
+dedicates logic registers: 0
+total pins: 12
 -------------- dados de atraso ---------------
-input port:
-output port:
-atraso (ns):
-RR, RF, FR, FF:
+input port: f[1]
+output port: a[1]
+atraso (ns): 4.949
+RR, RF, FR, FF: FF
