@@ -3,7 +3,7 @@ USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
 ENTITY mux4para1 IS
-	GENERIC (N : POSITIVE := 1);
+	GENERIC (N : POSITIVE := 2);
 	PORT (
 			a, b, c, d : IN std_logic_vector (N - 1 DOWNTO 0);
 			sel : IN std_logic_vector (1 DOWNTO 0);
@@ -14,10 +14,10 @@ ENTITY mux4para1 IS
 ARCHITECTURE arch OF mux4para1 IS
 
 	BEGIN
-	
-		y <= a when sel = "00" else
-			  b when sel = "01" else
-			  c when sel = "10" else
-			  d when sel = "11";
+		with sel select
+		y <= a when "00",
+			  b when "01",
+			  c when "10",
+			  d when others;
 
 	END arch;
