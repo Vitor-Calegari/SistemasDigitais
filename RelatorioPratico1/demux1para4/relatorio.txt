@@ -1,6 +1,9 @@
 --------------- dados do aluno ---------------
 nome: Vitor Praxedes Calegari
 matricula: 22200379
+--------------- dados do aluno ---------------
+nome:Rita Louro Barbosa
+matricula:22203157
 --------------- dados do fpga ----------------
 familia: Cyclone III
 dispositivo: EP3C5E144C7
@@ -11,5 +14,5 @@ total pins: 12
 -------------- dados de atraso ---------------
 input port: f[1]
 output port: a[1]
-atraso (ns): 4.949
+atraso (ns): 9.407
 RR, RF, FR, FF: FF
