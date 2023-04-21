@@ -2,4 +2,4 @@ force /a 01 0 ns
 force /b 10 0 ns
 force /c 11 0 ns
 force /d 00 0 ns
-force /sel 00 0 ns, 01 15 ns, 10 30 ns, 11 45 ns
+force /sel 00 0 ns, 01 10 ns, 10 20 ns, 11 30 ns
