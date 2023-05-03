@@ -118,19 +118,20 @@ pB : registrador8bits port map( Mem_B, cpB, Clock, sig_pB );
 subt_ABS : subtrator8bits_abs port map( sig_pA, sig_pB, sig_diferenca );
 soma14 : somador14bits port map( sig_soma, "000000" & sig_diferenca, sig_soma14 );
 muxSoma : multiplex_2x1_14bits port map ( zsoma, sig_soma14, "00000000000000", sig_mux14 );
-soma :  registrador14bits port map ( sig_mux14, csoma, clock, sig_soma );
-SAD_reg : registrador14bits port map ( sig_soma, csadReg, clock, saida );
+soma :  registrador14bits port map ( sig_mux14, csoma, Clock, sig_soma );
+SAD_reg : registrador14bits port map ( sig_soma, csadReg, Clock, sig_SadReg );
 
 -----contador end e menor-----
 
 mux_i : multiplex_2x1_7bits port map ( zi, sig_over_flow_soma6 & sig_soma6, "0000000", sig_mux7 );
-i : registrador7bits port map ( sig_mux7, ci, clock, sig_i );
+i : registrador7bits port map ( sig_mux7, ci, Clock, sig_i );
 somador6 : somador6bits_ovf port map ( sig_i(5 downto 0), "000001", sig_soma6, sig_over_flow_soma6 );
 
 ------saídas-------------------
 
 ende <= sig_i(5 downto 0);
 menor <= not(sig_i(6));
+saida <= sig_SadReg;
 
 end arc;
 
