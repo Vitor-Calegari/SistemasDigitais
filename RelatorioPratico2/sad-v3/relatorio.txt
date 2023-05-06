@@ -1,17 +1,17 @@
 --------------- dados do aluno ---------------
-nome:
-matricula:
+nome: Vitor Praxedes Calegari
+matricula: 22200379
 --------------- dados do aluno ---------------
-nome:
-matricula:
+nome: Rita Louro Barbosa
+matricula: 22203157
 --------------- dados do fpga ----------------
-familia:
-dispositivo:
+familia: Cyclone III
+dispositivo: EP3C5M164C7
 -------- dados de utilizacao da placa --------
-total combinational functions:
-dedicates logic registers:
-total pins:
+total combinational functions: 150
+dedicates logic registers: 103
+total pins: 87
 -------------- dados de atraso ---------------
-input port:
-output port:
-atraso (ns):
+input port: input?
+output port: resultado[6]
+atraso (ns): 7.621

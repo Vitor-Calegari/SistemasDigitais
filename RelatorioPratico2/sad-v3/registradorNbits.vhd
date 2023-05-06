@@ -1,16 +1,16 @@
 LIBRARY ieee ;
 USE ieee.std_logic_1164.all ;
 
-ENTITY registrador8bits IS
-
-	PORT (R : IN STD_LOGIC_VECTOR(7 DOWNTO 0) ;
+ENTITY registradorNbits IS
+	GENERIC(N :INTEGER:= 14);
+	PORT (R : IN STD_LOGIC_VECTOR(N - 1 DOWNTO 0) ;
 			Enable, Clock: IN STD_LOGIC ;
-			Q : OUT STD_LOGIC_VECTOR(7 DOWNTO 0) 
+			Q : OUT STD_LOGIC_VECTOR(N - 1 DOWNTO 0) 
 			) ;
 	
-END registrador8bits ;
+END registradorNbits ;
 
-ARCHITECTURE rtl OF registrador8bits IS
+ARCHITECTURE rtl OF registradorNbits IS
 	BEGIN
 	
 		PROCESS

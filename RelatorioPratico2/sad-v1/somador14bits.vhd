@@ -13,6 +13,11 @@ ENTITY somador14bits IS
 END somador14bits;
 
 ARCHITECTURE rtl OF somador14bits IS
+	
+	signal add1_un, add2_un: std_logic_vector(14 downto 0);
+	
 	BEGIN
-		sum <= std_logic_vector(unsigned(add1) + unsigned(add2));
+		add1_un <= '0' & add1;
+		add2_un <= '0' & add2;
+		sum <= std_logic_vector(unsigned(add1_un) + unsigned(add2_un))(13 downto 0);
 END rtl;

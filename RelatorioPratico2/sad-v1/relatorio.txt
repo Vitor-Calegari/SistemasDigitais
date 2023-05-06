@@ -12,6 +12,6 @@ total combinational functions: 45
 dedicates logic registers: 57
 total pins: 41
 -------------- dados de atraso ---------------
-input port:
-output port:
-atraso (ns):
+input port: input?
+output port: resultado[1]
+atraso (ns): 7.631
