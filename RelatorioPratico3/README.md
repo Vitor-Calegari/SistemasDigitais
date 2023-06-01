@@ -9,7 +9,7 @@ nome:Rita Louro Barbosa
 matricula:22203157
 
 ----------- Descricao do trabalho ------------
-
+tempo do testbench 1: 11850 ns 
 
 ---------Desafios enfrentados--------------
 

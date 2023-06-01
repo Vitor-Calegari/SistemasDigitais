@@ -16,8 +16,7 @@ signal sig_pronto, sig_ler: std_logic;
 signal sig_endereco: std_logic_vector(5 downto 0);
 signal sig_resultado: std_logic_vector(13 downto 0);
 constant periodoClock : time := 20 ns;
-
-shared variable passo : TIME:= 40 ns;
+constant passo : TIME:= 3950 ns;
 
 begin
 
@@ -30,14 +29,26 @@ begin
 	process
 	begin
 	
-		sig_iniciar   <= '0';
+		sig_iniciar   <= '1';
 		sig_reset	  <= '0';
 		sig_Mem_A	  <= "00000001";
 		sig_Mem_B 	  <= "00000000";
 		wait for passo;
-		assert(sig_pronto = '1' and sig_resultado = "00000000000000") report "Fail 0" severity error;
+		assert(sig_resultado = "00000001000000") report "Fail 0" severity error;
 		
-		--Fazer os testes de verdade:
+		sig_iniciar   <= '1';
+		sig_reset     <= '0';
+		sig_Mem_A	  <= "11111111";
+		sig_Mem_B 	  <= "00000000";
+		wait for passo;
+		assert(sig_resultado = "11111111000000") report "Fail 1" severity error;
+		
+		sig_iniciar   <= '1';
+		sig_reset     <= '0';
+		sig_Mem_A	  <= "00000011";
+		sig_Mem_B 	  <= "00000001";
+		wait for passo;
+		assert(sig_resultado = "00000010000000") report "Fail 2" severity error;
 		
 		assert false report "Test done." severity note;
 	wait;
