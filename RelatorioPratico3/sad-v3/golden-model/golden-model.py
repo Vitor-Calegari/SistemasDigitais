@@ -1,4 +1,5 @@
 import os
+import random
 
 class sad_v3:
 
@@ -11,24 +12,26 @@ class sad_v3:
 	@property
 	def memA(self):
 		return self.__memA
+	
+	@memA.setter
+	def memA(self, string_32bits: str):
+		if self.__checaStrBin(string_32bits):
+			self.__memA = string_32bits
+		return
     
 	@property
 	def memB(self):
 		return self.__memB
 	
-	@property
-	def testes(self):
-		return self.__testes
-
-	def inclui_memA(self, string_32bits: str):
-		if self.__checaStrBin(string_32bits):
-			self.__memA = string_32bits
-		return
-
-	def inclui_memB(self, string_32bits: str):
+	@memB.setter
+	def memB(self, string_32bits: str):
 		if self.__checaStrBin(string_32bits):
 			self.__memB = string_32bits
 		return
+	
+	@property
+	def testes(self):
+		return self.__testes
 	
 	'''
 	Função auxiliar que checa se uma dada string é binária
@@ -53,7 +56,7 @@ class sad_v3:
 	'''
 	Calcula a sad baseado nos valores de self.__memA e self.__memB
 	'''
-	def calcula(self):
+	def calculaSad(self):
 		if self.__memA.isnumeric() and self.__memB.isnumeric() and self.__checaStrBin(self.__memA) and self.__checaStrBin(self.__memB) and len(self.__memA) == len(self.__memB):
 			numero_0_memA = int(self.__memA[0:8],2)
 			numero_1_memA = int(self.__memA[8:16],2)
@@ -87,12 +90,15 @@ class sad_v3:
 	def exporta(self):
 		nome_arquivo = "estimulos.dat"
 
-		if self.__resultado != None:
+		if self.__testes != []:
 			dados = ''
 
-			for teste in self.__testes:
+			for i, teste in enumerate(self.__testes):
 				linha_de_teste = ' '.join(teste)
-				dados += f'{linha_de_teste}\n'
+				if i != len(self.__testes) - 1:
+					dados += f'{linha_de_teste}\n'
+				else:
+					dados += linha_de_teste
 
 			diretorio_atual = os.path.dirname(os.path.abspath(__file__))
 			caminho_arquivo = os.path.join(diretorio_atual, nome_arquivo)
@@ -106,10 +112,13 @@ class sad_v3:
 
 if __name__ == '__main__':
 	sad = sad_v3()
-	sad.inclui_memA('00000001000000010000000100000001')
-	sad.inclui_memB('00000000000000000000000000000000')
-	sad.calcula()
-	sad.inclui_memA('11111111111111111111111111111111')
-	sad.inclui_memB('00000000000000000000000000000000')
-	sad.calcula()
+	for i in range(50):
+		input_A = ''
+		input_B = ''
+		for i in range(32):
+			input_A += str(random.randint(0,1))
+			input_B += str(random.randint(0,1))
+		sad.memA = input_A
+		sad.memB = input_B
+		sad.calculaSad()
 	sad.exporta()
