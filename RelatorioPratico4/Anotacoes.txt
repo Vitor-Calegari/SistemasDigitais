@@ -1,0 +1,5 @@
+Tempo do testbench do controle da ula = 70 ns
+Combinação input output mais lenta = funct[0] -> sel[0] atraso de 9.799 ns
+
+
+Devo testar casos fora da tabela?
