@@ -3,10 +3,10 @@ use IEEE.std_logic_1164.all;
 use ieee.math_real.all;
 use ieee.numeric_std.all;
 
-entity testbench is
-end testbench;
+entity testbench_controle_ula is
+end testbench_controle_ula;
 
-architecture tb of testbench is
+architecture tb of testbench_controle_ula is
 
 ---------------------Entradas-----------------------
 signal sig_funct	: std_logic_vector (5 downto 0);
