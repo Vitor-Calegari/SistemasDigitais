@@ -7,13 +7,14 @@ entity controlador_estados is
         reset : in std_logic;
         iniciar: in std_logic;
         EnRegA, enRegB, enRegC: out std_logic;
+        reset_datapath: out std_logic;
         pronto: out std_logic
     );
 end entity;
 
 architecture rtl of controlador_estados is
     TYPE
-    Estado is (S0, S1, S2);
+    Estado is (R, S0, S1, S2);
     signal estado_atual: Estado;
 
 begin
@@ -21,12 +22,15 @@ begin
     process (reset, clk)
     begin
         if reset = '1' then
-            estado_atual <= S0;
+            estado_atual <= R;
         elsif (rising_edge(clk)) then
             case estado_atual is
+                when R =>
+                    estado_atual <= S0;
+
                 when S0 =>
-                if iniciar = '1' then
-                    estado_atual <= S1;
+                    if iniciar = '1' then
+                        estado_atual <= S1;
                 else
                     estado_atual <= S0;
                 end if;
@@ -39,6 +43,9 @@ begin
                 end case;
             end if;
         end process;
+        reset_datapath <= '1' when 
+            estado_atual = R
+        else '0';
         pronto <= '1' when
             estado_atual = S0
         else '0';

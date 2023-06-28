@@ -20,8 +20,9 @@ architecture rtl of toplevel is
             clk   : in std_logic;
             reset : in std_logic;
             iniciar: in std_logic;
+            pronto: out std_logic;
             EnRegA, enRegB, enRegC: out std_logic;
-            pronto: out std_logic
+            reset_datapath: out std_logic
         );
     end component;
 	 
@@ -38,6 +39,7 @@ architecture rtl of toplevel is
 	 end component;
 	
     signal sig_enRegA, sig_enRegB, sig_enRegC: std_logic;
+    signal reset_datapath: std_logic;
 
 begin
     controlador_es: controlador_estados
@@ -47,12 +49,13 @@ begin
             iniciar => iniciar,
             EnRegA => sig_enRegA,
             EnRegB => sig_enRegB,
-            EnRegC => sig_enRegC
+            EnRegC => sig_enRegC,
+            reset_datapath => reset_datapath
         );
 		  
 	 bloco_operativo: datapath port map(
 													clk    => clk,
-													reset  => reset,
+													reset  => reset_datapath,
 													enRegA => sig_enRegA,
 													enRegB => sig_enRegB,
 													enRegC => sig_enRegC,

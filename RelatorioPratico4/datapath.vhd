@@ -6,7 +6,7 @@ entity datapath is
         clk   : in std_logic;
         reset: in std_logic;
         enRegA, enRegB, enRegC: in std_logic;
-		  UlaOp: in std_logic_vector(1 downto 0);
+		UlaOp: in std_logic_vector(1 downto 0);
         funct: in std_logic_vector(5 downto 0);
         a, b: in std_logic_vector(31 downto 0);
         c: out std_logic_vector(31 downto 0)
