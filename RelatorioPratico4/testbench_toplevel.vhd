@@ -3,10 +3,10 @@ use IEEE.std_logic_1164.all;
 use ieee.math_real.all;
 use ieee.numeric_std.all;
 
-entity testbench_controle_ula is
-end testbench_controle_ula;
+entity testbench_toplevel is
+end testbench_toplevel;
 
-architecture tb of testbench_controle_ula is
+architecture tb of testbench_toplevel is
 
 ---------------------Entradas-----------------------
 signal clk      : std_logic;
