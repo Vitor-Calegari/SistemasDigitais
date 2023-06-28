@@ -6,7 +6,7 @@ entity controlador_estados is
         clk   : in std_logic;
         reset : in std_logic;
         iniciar: in std_logic;
-        EnRegA, enRegB, enRegC: out std_logic;
+        EnRegA, enRegB, enRegC, enRegD: out std_logic;
         reset_datapath: out std_logic;
         pronto: out std_logic
     );
@@ -56,6 +56,9 @@ begin
             estado_atual = S1
         else '0';
         EnRegC <= '1' when
+            estado_atual = S2
+        else '0';
+		  EnRegD <= '1' when
             estado_atual = S2
         else '0';
 end architecture;

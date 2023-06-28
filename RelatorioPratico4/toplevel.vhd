@@ -9,7 +9,8 @@ entity toplevel is
         UlaOp: in std_logic_vector(1 downto 0);
         funct: in std_logic_vector(5 downto 0);
         a, b: in std_logic_vector(31 downto 0);
-        c: out std_logic_vector(31 downto 0)
+        c: out std_logic_vector(31 downto 0);
+		  overflow: out std_logic
     );
 end entity;
 
@@ -34,7 +35,8 @@ architecture rtl of toplevel is
 				UlaOp: in std_logic_vector(1 downto 0);
 				funct: in std_logic_vector(5 downto 0);
 				a, b: in std_logic_vector(31 downto 0);
-				c: out std_logic_vector(31 downto 0)
+				c: out std_logic_vector(31 downto 0);
+				overflow: out std_logic
 		  );
 	 end component;
 	
@@ -63,7 +65,8 @@ begin
 													funct  => funct,
 													a      => a,
 													b      => b,
-													c      => c
+													c      => c,
+													overflow => overflow
 	 );
     
 end architecture;
