@@ -75,9 +75,9 @@ begin
 									);
     
 	 Ctrl_ULA: ControleUla port map(
-												funct => funct,
-												ULAOp => ULAOp,
-												sel => sig_sel
-											);
+                                            funct => funct,
+                                            ULAOp => ULAOp,
+                                            sel => sig_sel
+                                        );
 
 end architecture;

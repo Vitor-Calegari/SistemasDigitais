@@ -23,26 +23,22 @@ signal c          : std_logic_vector (31 downto 0);
 signal passo : TIME:= 30 ns;
 signal clock_period : TIME := 20 ns;
 
+begin
 
-clk_process :process
+DUV: entity work.toplevel port map(clk, iniciar, reset, UlaOp, funct, a, b, c);
+
+clk_process : process
 begin
 	 clk <= '0';
-	 wait for clk_period/2;
+	 wait for clock_period/2;
 	 clk <= '1';
-	 wait for clk_period/2;
+	 wait for clock_period/2;
 end process;
 
-process
-
-begin
-
-	-- Connect DUV
-	DUV: entity work.toplevel port map(clk, iniciar, reset, UlaOp, funct, a, b, c);
-
-    process
+	process
 	begin
 	
-		rst <= '0';
+		reset <= '0';
 		iniciar <= '1';
 		a <= "00000000000000000000000011111111"; -- 11111111 (8bits)
       	b <= "00000000000000000000000000000000"; -- 00000000 (8bits)
