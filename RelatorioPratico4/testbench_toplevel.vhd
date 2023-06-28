@@ -20,7 +20,7 @@ signal b		: std_logic_vector (31 downto 0);
 signal c          : std_logic_vector (31 downto 0);
 
 
-signal passo : TIME:= 30 ns;
+signal passo : TIME:= 600 ns;
 signal clock_period : TIME := 20 ns;
 
 begin
@@ -41,7 +41,7 @@ end process;
 		reset <= '0';
 		iniciar <= '1';
 		a <= "00000000000000000000000011111111"; -- 11111111 (8bits)
-      	b <= "00000000000000000000000000000000"; -- 00000000 (8bits)
+      b <= "00000000000000000000000000000000"; -- 00000000 (8bits)
 		funct <= "000000"; -- 000000 (6 bits)
 		UlaOp <= "00";
 		wait for passo;
