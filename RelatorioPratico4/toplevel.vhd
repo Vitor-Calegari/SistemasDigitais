@@ -22,7 +22,7 @@ architecture rtl of toplevel is
             reset : in std_logic;
             iniciar: in std_logic;
             pronto: out std_logic;
-            EnRegA, enRegB, enRegC: out std_logic;
+            EnRegA, enRegB, enRegC, enRegD: out std_logic;
             reset_datapath: out std_logic
         );
     end component;
@@ -31,7 +31,7 @@ architecture rtl of toplevel is
 		  port (
 				clk   : in std_logic;
 				reset: in std_logic;
-				enRegA, enRegB, enRegC: in std_logic;
+				enRegA, enRegB, enRegC, enRegD: in std_logic;
 				UlaOp: in std_logic_vector(1 downto 0);
 				funct: in std_logic_vector(5 downto 0);
 				a, b: in std_logic_vector(31 downto 0);
@@ -40,7 +40,7 @@ architecture rtl of toplevel is
 		  );
 	 end component;
 	
-    signal sig_enRegA, sig_enRegB, sig_enRegC: std_logic;
+    signal sig_enRegA, sig_enRegB, sig_enRegC, sig_enRegD: std_logic;
     signal reset_datapath: std_logic;
 
 begin
@@ -52,6 +52,7 @@ begin
             EnRegA => sig_enRegA,
             EnRegB => sig_enRegB,
             EnRegC => sig_enRegC,
+				EnRegD => sig_enRegD,
             reset_datapath => reset_datapath
         );
 		  
@@ -61,6 +62,7 @@ begin
 													enRegA => sig_enRegA,
 													enRegB => sig_enRegB,
 													enRegC => sig_enRegC,
+													EnRegD => sig_enRegD,
 													UlaOp  => UlaOp,
 													funct  => funct,
 													a      => a,

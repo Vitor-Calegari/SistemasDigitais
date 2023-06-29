@@ -21,7 +21,7 @@ signal c          : std_logic_vector (31 downto 0);
 signal overflow   : std_logic;
 
 
-signal passo : TIME:= 600 ns;
+signal passo : TIME:= 80 ns;
 signal clock_period : TIME := 20 ns;
 
 begin
@@ -104,6 +104,10 @@ end process;
 		wait for passo;
 		assert(c="11111111111111111111111111111110" and overflow='1') 
 		report "Falha na adição com overflow" severity error;
+		
+		wait for passo;
+		assert false report "Teste feito" severity note;
+		wait;
 
 	end process;
 end tb;
