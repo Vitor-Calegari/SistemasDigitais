@@ -18,6 +18,7 @@ signal a		: std_logic_vector (31 downto 0);
 signal b		: std_logic_vector (31 downto 0);
 ----------------------Saidas-------------------------
 signal c          : std_logic_vector (31 downto 0);
+signal overflow   : std_logic;
 
 
 signal passo : TIME:= 600 ns;
@@ -25,7 +26,7 @@ signal clock_period : TIME := 20 ns;
 
 begin
 
-DUV: entity work.toplevel port map(clk, iniciar, reset, UlaOp, funct, a, b, c);
+DUV: entity work.toplevel port map(clk, iniciar, reset, UlaOp, funct, a, b, c, overflow);
 
 clk_process : process
 begin
@@ -95,6 +96,14 @@ end process;
 		wait for passo;
 		assert(c="00000000000000000000000000000000") 
 		report "Falha no or slt" severity error;
+
+		a <= "11111111111111111111111111111111"; -- 11111111 (8bits)
+		b <= "11111111111111111111111111111111"; -- 00000000 (8bits)
+		funct <= "100000"; -- 000000 (6 bits)
+		UlaOp <= "10";
+		wait for passo;
+		assert(c="11111111111111111111111111111110" and overflow='1') 
+		report "Falha na adição com overflow" severity error;
 
 	end process;
 end tb;
